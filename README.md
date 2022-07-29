@@ -26,6 +26,7 @@ Before you start using this cli tool, you should setup Mailchimp API, Mailchimp 
 
 And after the command has been run, the interface below will appear:
 ![Config Page Part 1](images/config_page_part1.png)
+
 You are required to create (n), edit(e) the config variables such as mailchimp username, mailchimp API, and fill in the Google Service Account Credentials JSON path that you have downloaded. 
 
 ![Config Page Part 2](images/config_page_part2.png)
