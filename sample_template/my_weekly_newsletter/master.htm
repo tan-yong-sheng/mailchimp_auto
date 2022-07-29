@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="MY_weekly_newsletter/style.css" type="text/css">
+
+</head>
+<body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
+    <!--*|IF:MC_PREVIEW_TEXT|*-->
+    <!--[if !gte mso 9]>--><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
+    <!--*|END:IF|*-->
+    <center>
+        {% include "MY_weekly_newsletter/block/01_weekly_quote.htm" %}
+        {% include "MY_weekly_newsletter/block/02_community_insights.htm" %}
+        {% include "MY_weekly_newsletter/block/03_trending_news.htm" %}
+        {% include "MY_weekly_newsletter/block/04_upcoming_dividend.htm" %}
+        {% include "MY_weekly_newsletter/block/05_estimation.htm" %}
+        {% include "MY_weekly_newsletter/block/06_footer.htm" %}
+    </center>
+</body>
+</html>
