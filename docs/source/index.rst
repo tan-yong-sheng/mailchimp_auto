@@ -17,6 +17,7 @@ Introduction
 ------------
 
 This package uses 2 major packages: 
+
 -  mailchimp-marketing to automate creating campaign on Mailchimp 
 -  jinja2 for managing tags inserted into the HTML email template to loop over and replace the data elements.
 
