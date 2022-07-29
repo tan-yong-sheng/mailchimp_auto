@@ -36,7 +36,7 @@ e) Edit existing account
 n) New account
 d) Delete account
 q) quit
-e/n/d/q > *e*
+e/n/d/q > e
 ```
 
 You are required to create (n), edit(e) the config variables such as mailchimp username, mailchimp API, and fill in the Google Service Account Credentials JSON path that you have downloaded. 
@@ -74,7 +74,7 @@ e) Edit existing template
 n) New template
 d) Delete template
 q) quit
-e/n/d/q > *e*
+e/n/d/q > e
 ```
 
 But, before continue to enter any input into it, please prepare the few things below:
@@ -127,11 +127,11 @@ Template > 1
 
 Template folder.
 The file path of the HTML email template folder.
-Enter a string value. Press Enter for the default (C:\Users\tys\Documents\mailchimp-auto\template\my_weekly_newsletter): *C:\Users\tys\Documents\Project\mailchimp_creation_project\mailchimp-auto\sample_template*
+Enter a string value. Press Enter for the default (C:\Users\tys\Documents\mailchimp-auto\template\my_weekly_newsletter): C:\Users\tys\Documents\Project\mailchimp_creation_project\mailchimp-auto\sample_template
 
 Spreadsheet url.
 The Google spreadsheet url that you want to parse it to the Jinja2 HTML email template: .
-Enter a string value. Press Enter for the default (https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit#gid=1758545491): *https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit#gid=1758545491*
+Enter a string value. Press Enter for the default (https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit#gid=1758545491): https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit#gid=1758545491
 
 Worksheet Title of Campaign Info.
 The worksheet title of campaign info: .
@@ -143,11 +143,11 @@ Enter a series of cell ranges, separated by symbol (,). Press Enter for the defa
 
 Worksheet Title of Campaign Content.
 The worksheet title of campaign content: .
-Enter a series of cell ranges, separated by symbol (,). Press Enter for the default (Campaign Content): *Campaign Content*
+Enter a series of cell ranges, separated by symbol (,). Press Enter for the default (Campaign Content): Campaign Content
 
 Campaign Content.
 The Campaign Content that you want to pass it to the Jinja2 HTML email template: .
-Enter a series of cell ranges, separated by symbol (,). Press Enter for the default (A3:B5,A7:G20,A22:C31,A33:D41,A43:G48): *A3:B5,A7:G20,A22:C31,A33:D41,A43:G48*
+Enter a series of cell ranges, separated by symbol (,). Press Enter for the default (A3:B5,A7:G20,A22:C31,A33:D41,A43:G48): A3:B5,A7:G20,A22:C31,A33:D41,A43:G48
 ```
 
 
