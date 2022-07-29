@@ -154,7 +154,7 @@ Enter a series of cell ranges, separated by symbol (,). Press Enter for the defa
 ## Running the program to automate the campaign creation
 Enter the command line `mailchimp_auto create --user <mailchimp_account_username> --template <your_template>` and then it will scrape data from Google Spreadsheet you assigned to and inserted them into the HTML email template to loop over and replace the data elements. 
 
-If you don't want to upload your template to mailchimp server first, add the command `--preview` behind the previous command line, e.g.,   `mailchimp_auto create --user <mailchimp_account_username> --template <your_template> --preview`.
+If you don't want to upload your processed HTML email template to mailchimp server first, add the command `--preview` behind the previous command line, e.g.,   `mailchimp_auto create --user <mailchimp_account_username> --template <your_template> --preview`.
 
 It's all done. Hope you are successful with that. If got any problem, kindly contact me. By the way, this is my first time creating a python library (or cli tool) to automate my task. I know some python syntax works not the best for the program (e.g., too much repetitive code, etc). But, I hope I could learn more through creating and maintaining this program.
 
