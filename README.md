@@ -25,11 +25,35 @@ As a newbie hobbyist in Python, I found it very troublesome to drag and drop the
 Before you start using this cli tool, you should setup Mailchimp API, Mailchimp server prefix, Google Service account's json file through the command line `mailchimp_auto config` or `python -m mailchimp_auto config`.
 
 And after the command has been run, the interface below will appear:
-![Config Page Part 1](images/config_page_part1.png)
+
+```
+Current Mailchimp remote:
+Account Username        Server Prefix
+=================       =============
+TYONGSHENG               us1
+
+e) Edit existing account
+n) New account
+d) Delete account
+q) quit
+e/n/d/q > *e*
+```
 
 You are required to create (n), edit(e) the config variables such as mailchimp username, mailchimp API, and fill in the Google Service Account Credentials JSON path that you have downloaded. 
 
-![Config Page Part 2](images/config_page_part2.png)
+```
+Select account.
+Choose a number from below, or type in an existing value.
+1 >  TYONGSHENG
+Account > 1
+
+Mailchimp API
+Enter a string value. Press Enter for the default (2exxxxxxxxxxxxxxxxxxxxxxxx-us1): 2exxxxxxxxxxxxxxxxxxxxxxxx-us1
+
+Service_account_file.
+Google Service Account Credentials JSON file path.
+Enter a string value. Press Enter for the default (C:\Users\tys\Documents\mailchimp-auto\.config\service_account_file\TYONGSHENG.json): C:\Users\tys\Documents\mailchimp-auto\.config\service_account_file\TYONGSHENG.json
+```
 
 For how to open a Google service account and download its JSON key, follow Step 1 to Step 5 [here](https://owaisqureshi.medium.com/access-google-sheets-api-in-python-using-service-account-3a0c6d89d5fc). 
 
@@ -39,7 +63,19 @@ Feel free to delete (d) any entry you don't need anymore!
 ### Template Configuration
 Type the command line `mailchimp_auto config-template` or `python -m mailchimp_auto config-template` to upload and save the HTML email template (in form of Jinja tags) to this program and also setup spreadsheet (using spreadsheet url) to get the data you want to parse or loop into the HTML email template. 
 
-![Template Config Page Part 1](images/template_config_page_part1.png)
+```
+Current template(s):
+Template                        Spreadsheet Id
+========                        ===============
+my_weekly_newsletter             1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0
+
+
+e) Edit existing template
+n) New template
+d) Delete template
+q) quit
+e/n/d/q > *e*
+```
 
 But, before continue to enter any input into it, please prepare the few things below:
 
