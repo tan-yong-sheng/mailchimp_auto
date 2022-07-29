@@ -39,7 +39,7 @@ Feel free to delete (d) any entry you don't need anymore!
 ### Template Configuration
 Type the command line `mailchimp_auto config-template` or `python -m mailchimp_auto config-template` to upload and save the HTML email template (in form of Jinja tags) to this program and also setup spreadsheet (using spreadsheet url) to get the data you want to parse or loop into the HTML email template. 
 
-![Template Config Page Part 1](images\template_config_page_part1.png)
+![Template Config Page Part 1](images/template_config_page_part1.png)
 
 But, before continue to enter any input into it, please prepare the few things below:
 
@@ -59,7 +59,7 @@ So, for example, referring to the [spreadsheet](https://docs.google.com/spreadsh
     <p>And here is the dynamic variable here: {{ community_insights.heading[key] }}</p>
 {% endfor %}
 ```
-![gspread-data](images\spreadsheet_sample.png)
+![Gspread Data](images/spreadsheet_sample.png)
 
 For the template folder structure, you can refer here, whereby `master.htm` is the COMPULSORY file to have when generating html email output (refer to [sample template folder](sample_template) ): 
 ```
