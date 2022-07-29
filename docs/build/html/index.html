@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting started with mailchimp_auto! &mdash; mailchimp_auto 0.1.0 documentation</title>
+  <title>mailchimp_auto &mdash; mailchimp_auto 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -38,9 +38,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Getting started with mailchimp_auto!</a><ul>
-<li><a class="reference internal" href="#guide">Guide</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">mailchimp_auto</a><ul>
+<li><a class="reference internal" href="#welcome-to-mailchimp-autos-documentation">Welcome to mailchimp_auto’s documentation!</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#account-configuration">Account Configuration</a></li>
+<li><a class="reference internal" href="#template-configuration">Template Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-the-program-to-automate-the-campaign-creation">Running the program to automate the campaign creation</a></li>
+<li><a class="reference internal" href="#other-information">Other information</a></li>
 </ul>
 </li>
 </ul>
@@ -59,7 +66,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Getting started with mailchimp_auto!</li>
+      <li>mailchimp_auto</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,21 +76,221 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="getting-started-with-mailchimp-auto">
-<h1>Getting started with mailchimp_auto!<a class="headerlink" href="#getting-started-with-mailchimp-auto" title="Permalink to this heading"></a></h1>
-<section id="guide">
-<h2>Guide<a class="headerlink" href="#guide" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mailchimp_auto</span></code></p>
-<div class="toctree-wrapper compound">
+  <section id="mailchimp-auto">
+<h1>mailchimp_auto<a class="headerlink" href="#mailchimp-auto" title="Permalink to this heading"></a></h1>
+<section id="welcome-to-mailchimp-autos-documentation">
+<h2>Welcome to mailchimp_auto’s documentation!<a class="headerlink" href="#welcome-to-mailchimp-autos-documentation" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">mailchimp_auto</span></code> is a command line application to automate the email
+creation process on MailChimp based on the google spreadsheet input.
+What it does is using Jinja2 template engine to loop over dummy values
+(e.g., website url, image url, string) on html template in order to
+create the html template to be uploaded to MailChimp server.</p>
+<p>(Note: This project is highly customized for personal use, but it’s okay
+for reference.)</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>This package uses 2 major packages: * mailchimp-marketing to automate
+creating campaign on Mailchimp * jinja2 for managing tags inserted into
+the HTML email template to loop over and replace the data elements.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h2>
+<section id="account-configuration">
+<h3>Account Configuration<a class="headerlink" href="#account-configuration" title="Permalink to this heading"></a></h3>
+<p>Before you start using this cli tool, you should setup Mailchimp API,
+Mailchimp server prefix, Google Service account’s json file through the
+command line <code class="docutils literal notranslate"><span class="pre">mailchimp_auto</span> <span class="pre">config</span></code> or
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">mailchimp_auto</span> <span class="pre">config</span></code>.</p>
+<p>And after the command has been run, the interface below will appear:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Current</span> <span class="n">Mailchimp</span> <span class="n">remote</span><span class="p">:</span>
+<span class="n">Account</span> <span class="n">Username</span>        <span class="n">Server</span> <span class="n">Prefix</span>
+<span class="o">=================</span>       <span class="o">=============</span>
+<span class="n">TYONGSHENG</span>               <span class="n">us1</span>
+
+<span class="n">e</span><span class="p">)</span> <span class="n">Edit</span> <span class="n">existing</span> <span class="n">account</span>
+<span class="n">n</span><span class="p">)</span> <span class="n">New</span> <span class="n">account</span>
+<span class="n">d</span><span class="p">)</span> <span class="n">Delete</span> <span class="n">account</span>
+<span class="n">q</span><span class="p">)</span> <span class="n">quit</span>
+<span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">q</span> <span class="o">&gt;</span> <span class="n">e</span>
+</pre></div>
+</div>
+<p>You are required to create (n), edit(e) the config variables such as
+mailchimp username, mailchimp API, and fill in the Google Service
+Account Credentials JSON path that you have downloaded.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">account</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">an</span> <span class="n">existing</span> <span class="n">value</span><span class="o">.</span>
+<span class="mi">1</span> <span class="o">&gt;</span>  <span class="n">TYONGSHENG</span>
+<span class="n">Account</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+<span class="n">Mailchimp</span> <span class="n">API</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="mi">2</span><span class="n">exxxxxxxxxxxxxxxxxxxxxxxx</span><span class="o">-</span><span class="n">us1</span><span class="p">):</span> <span class="mi">2</span><span class="n">exxxxxxxxxxxxxxxxxxxxxxxx</span><span class="o">-</span><span class="n">us1</span>
+
+<span class="n">Service_account_file</span><span class="o">.</span>
+<span class="n">Google</span> <span class="n">Service</span> <span class="n">Account</span> <span class="n">Credentials</span> <span class="n">JSON</span> <span class="n">file</span> <span class="n">path</span><span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">tys</span>\<span class="n">Documents</span>\<span class="n">mailchimp</span><span class="o">-</span><span class="n">auto</span>\<span class="o">.</span><span class="n">config</span>\<span class="n">service_account_file</span>\<span class="n">TYONGSHENG</span><span class="o">.</span><span class="n">json</span><span class="p">):</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">tys</span>\<span class="n">Documents</span>\<span class="n">mailchimp</span><span class="o">-</span><span class="n">auto</span>\<span class="o">.</span><span class="n">config</span>\<span class="n">service_account_file</span>\<span class="n">TYONGSHENG</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>For how to open a Google service account and download its JSON key,
+follow Step 1 to Step 5
+<a class="reference external" href="https://owaisqureshi.medium.com/access-google-sheets-api-in-python-using-service-account-3a0c6d89d5fc">here</a>.</p>
+<p>Feel free to delete (d) any entry you don’t need anymore!</p>
+</section>
+<section id="template-configuration">
+<h3>Template Configuration<a class="headerlink" href="#template-configuration" title="Permalink to this heading"></a></h3>
+<p>Type the command line <code class="docutils literal notranslate"><span class="pre">mailchimp_auto</span> <span class="pre">config-template</span></code> or
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">mailchimp_auto</span> <span class="pre">config-template</span></code> to upload and save the HTML
+email template (in form of Jinja tags) to this program and also setup
+spreadsheet (using spreadsheet url) to get the data you want to parse or
+loop into the HTML email template.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Current</span> <span class="n">template</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="n">Template</span>                        <span class="n">Spreadsheet</span> <span class="n">Id</span>
+<span class="o">========</span>                        <span class="o">===============</span>
+<span class="n">my_weekly_newsletter</span>             <span class="mi">1</span><span class="n">h31GQRfBqUpMmPCXI013J1</span><span class="o">-</span><span class="n">Y</span><span class="o">-</span><span class="n">kinfgifN6Pa3dx3hB0</span>
+
+
+<span class="n">e</span><span class="p">)</span> <span class="n">Edit</span> <span class="n">existing</span> <span class="n">template</span>
+<span class="n">n</span><span class="p">)</span> <span class="n">New</span> <span class="n">template</span>
+<span class="n">d</span><span class="p">)</span> <span class="n">Delete</span> <span class="n">template</span>
+<span class="n">q</span><span class="p">)</span> <span class="n">quit</span>
+<span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">q</span> <span class="o">&gt;</span> <span class="n">e</span>
+</pre></div>
+</div>
+<p>But, before continue to enter any input into it, please prepare the few
+things below:</p>
+<ol class="lowerroman simple">
+<li><p>Create an google spreadsheet with two pages, “Campaign Info” and
+“Campaign Content”. You can refer to the sample spreadsheet
+<a class="reference external" href="https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit?usp=sharing">here</a>,
+whereby the data there are to be scraped through this program to be
+processed into the HTML email template to replace the dummy
+variables I have placed using Jinja2 library module.</p></li>
+<li><p>Then, create an Jinja2 email template (<code class="docutils literal notranslate"><span class="pre">master.htm</span></code>) inside a
+folder.</p></li>
+</ol>
+<p>Here are some simple Jinja template tags in order to create the Jinja2
+email template (can skip this if you already know) or see
+<a class="reference external" href="https://jinja.palletsprojects.com/en/3.1.x/templates/">here</a> if you
+want to know more: * {{ … }} for Expressions to print to the template
+output * {% … %} for Statements</p>
+<p>So, for example, referring to the
+<a class="reference external" href="https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit?usp=sharing">spreadsheet</a>,
+if you want to parse the <code class="docutils literal notranslate"><span class="pre">community_insights</span></code> table variable int,
+below is the sample Jinja2 template tags:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% for key in community_insights.heading %}
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Any html content you want to loop can put it here<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>And here is the dynamic variable here: {{ community_insights.heading[key] }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+{% endfor %}
+</pre></div>
+</div>
+<figure class="align-default" id="id1">
+<img alt="Gspread Data" src="_images/spreadsheet_sample.png" />
+<figcaption>
+<p><span class="caption-text">Gspread Data</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For the template folder structure, you can refer here, whereby
+<code class="docutils literal notranslate"><span class="pre">master.htm</span></code> is the COMPULSORY file to have when generating html email
+output (refer to <a class="reference external" href="sample_template">sample template folder</a> ):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span>
+\<span class="o">---&lt;</span><span class="n">your</span> <span class="n">template</span> <span class="n">name</span><span class="o">&gt;</span>
+    <span class="o">|</span>   <span class="n">master</span><span class="o">.</span><span class="n">htm</span>
+</pre></div>
+</div>
+<p>Tips: For me, I export the HTML email template from the MailChimp and
+then edit the HTML file through replacing the Jinja2 template tags onto
+some variables which I wish to loop the data into them.</p>
+<ol class="lowerroman simple" start="3">
+<li><p>Continue back to the command line
+<code class="docutils literal notranslate"><span class="pre">mailchimp_auto</span> <span class="pre">config-template</span></code> and then do follow the
+following series of instructions:</p></li>
+</ol>
+<p>Below are the commands when I want to edit (e) some config of my
+template. It does the same when you want to create (n) a new template
+source.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Current</span> <span class="n">template</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="n">Template</span>                        <span class="n">Spreadsheet</span> <span class="n">Id</span>
+<span class="o">========</span>                        <span class="o">===============</span>
+<span class="n">my_weekly_newsletter</span>             <span class="mi">1</span><span class="n">h31GQRfBqUpMmPCXI013J1</span><span class="o">-</span><span class="n">Y</span><span class="o">-</span><span class="n">kinfgifN6Pa3dx3hB0</span>
+
+<span class="n">e</span><span class="p">)</span> <span class="n">Edit</span> <span class="n">existing</span> <span class="n">template</span>
+<span class="n">n</span><span class="p">)</span> <span class="n">New</span> <span class="n">template</span>
+<span class="n">d</span><span class="p">)</span> <span class="n">Delete</span> <span class="n">template</span>
+<span class="n">q</span><span class="p">)</span> <span class="n">quit</span>
+<span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">q</span> <span class="o">&gt;</span> <span class="n">e</span>
+
+<span class="n">Select</span> <span class="n">template</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">an</span> <span class="n">existing</span> <span class="n">value</span><span class="o">.</span>
+<span class="mi">1</span> <span class="o">&gt;</span>  <span class="n">my_weekly_newsletter</span>
+<span class="n">Template</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+<span class="n">Template</span> <span class="n">folder</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">file</span> <span class="n">path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">HTML</span> <span class="n">email</span> <span class="n">template</span> <span class="n">folder</span><span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">tys</span>\<span class="n">Documents</span>\<span class="n">mailchimp</span><span class="o">-</span><span class="n">auto</span>\<span class="n">template</span>\<span class="n">my_weekly_newsletter</span><span class="p">):</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">tys</span>\<span class="n">Documents</span>\<span class="n">Project</span>\<span class="n">mailchimp_creation_project</span>\<span class="n">mailchimp</span><span class="o">-</span><span class="n">auto</span>\<span class="n">sample_template</span>
+
+<span class="n">Spreadsheet</span> <span class="n">url</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">Google</span> <span class="n">spreadsheet</span> <span class="n">url</span> <span class="n">that</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">parse</span> <span class="n">it</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Jinja2</span> <span class="n">HTML</span> <span class="n">email</span> <span class="n">template</span><span class="p">:</span> <span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">spreadsheets</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="mi">1</span><span class="n">h31GQRfBqUpMmPCXI013J1</span><span class="o">-</span><span class="n">Y</span><span class="o">-</span><span class="n">kinfgifN6Pa3dx3hB0</span><span class="o">/</span><span class="n">edit</span><span class="c1">#gid=1758545491): https://docs.google.com/spreadsheets/d/1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0/edit#gid=1758545491</span>
+
+<span class="n">Worksheet</span> <span class="n">Title</span> <span class="n">of</span> <span class="n">Campaign</span> <span class="n">Info</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">worksheet</span> <span class="n">title</span> <span class="n">of</span> <span class="n">campaign</span> <span class="n">info</span><span class="p">:</span> <span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">series</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">symbol</span> <span class="p">(,)</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">Campaign</span> <span class="n">Info</span><span class="p">):</span> <span class="o">*</span><span class="n">Campaign</span> <span class="n">Info</span><span class="o">*</span>
+
+<span class="n">Campaign</span> <span class="n">Info</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">Campaign</span> <span class="n">info</span> <span class="n">that</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">parse</span> <span class="n">it</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Jinja2</span> <span class="n">HTML</span> <span class="n">email</span> <span class="n">template</span><span class="p">:</span> <span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">series</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">symbol</span> <span class="p">(,)</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">A1</span><span class="p">:</span><span class="n">B8</span><span class="p">):</span> <span class="o">*</span><span class="n">A1</span><span class="p">:</span><span class="n">B8</span><span class="o">*</span>
+
+<span class="n">Worksheet</span> <span class="n">Title</span> <span class="n">of</span> <span class="n">Campaign</span> <span class="n">Content</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">worksheet</span> <span class="n">title</span> <span class="n">of</span> <span class="n">campaign</span> <span class="n">content</span><span class="p">:</span> <span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">series</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">symbol</span> <span class="p">(,)</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">Campaign</span> <span class="n">Content</span><span class="p">):</span> <span class="n">Campaign</span> <span class="n">Content</span>
+
+<span class="n">Campaign</span> <span class="n">Content</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">Campaign</span> <span class="n">Content</span> <span class="n">that</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">it</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Jinja2</span> <span class="n">HTML</span> <span class="n">email</span> <span class="n">template</span><span class="p">:</span> <span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">series</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">symbol</span> <span class="p">(,)</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">A3</span><span class="p">:</span><span class="n">B5</span><span class="p">,</span><span class="n">A7</span><span class="p">:</span><span class="n">G20</span><span class="p">,</span><span class="n">A22</span><span class="p">:</span><span class="n">C31</span><span class="p">,</span><span class="n">A33</span><span class="p">:</span><span class="n">D41</span><span class="p">,</span><span class="n">A43</span><span class="p">:</span><span class="n">G48</span><span class="p">):</span> <span class="n">A3</span><span class="p">:</span><span class="n">B5</span><span class="p">,</span><span class="n">A7</span><span class="p">:</span><span class="n">G20</span><span class="p">,</span><span class="n">A22</span><span class="p">:</span><span class="n">C31</span><span class="p">,</span><span class="n">A33</span><span class="p">:</span><span class="n">D41</span><span class="p">,</span><span class="n">A43</span><span class="p">:</span><span class="n">G48</span>
+</pre></div>
 </div>
 </section>
-<section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+</section>
+<section id="running-the-program-to-automate-the-campaign-creation">
+<h2>Running the program to automate the campaign creation<a class="headerlink" href="#running-the-program-to-automate-the-campaign-creation" title="Permalink to this heading"></a></h2>
+<p>Enter the command line
+<code class="docutils literal notranslate"><span class="pre">mailchimp_auto</span> <span class="pre">create</span> <span class="pre">--user</span> <span class="pre">&lt;mailchimp_account_username&gt;</span> <span class="pre">--template</span> <span class="pre">&lt;your_template&gt;</span></code>
+and then it will scrape data from Google Spreadsheet you assigned to and
+inserted them into the HTML email template to loop over and replace the
+data elements.</p>
+<p>If you don’t want to upload your processed HTML email template to
+mailchimp server first, add the command <code class="docutils literal notranslate"><span class="pre">--preview</span></code> behind the
+previous command line, e.g.,
+<code class="docutils literal notranslate"><span class="pre">mailchimp_auto</span> <span class="pre">create</span> <span class="pre">--user</span> <span class="pre">&lt;mailchimp_account_username&gt;</span> <span class="pre">--template</span> <span class="pre">&lt;your_template&gt;</span> <span class="pre">--preview</span></code>.</p>
+<p>It’s all done. Hope you are successful with that. If got any problem,
+kindly contact me. By the way, this is my first time creating a python
+library (or cli tool) to automate my task. I know some python syntax
+works not the best for the program (e.g., too much repetitive code,
+etc). But, I hope I could learn more through creating and maintaining
+this program.</p>
+</section>
+<section id="other-information">
+<h2>Other information<a class="headerlink" href="#other-information" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> Usage: mailchimp_auto [OPTIONS] COMMAND [ARGS]...
+
+╭─ Options ────────────────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell.          │
+│ --show-completion             Show completion for the current shell, to copy it  │
+│                               or customize the installation.                     │
+│ --help                        Show this message and exit.                        │
+╰──────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────╮
+│ config           Setup Mailchimp API, Mailchimp server prefix, Google Service    │
+│                  account&#39;s json file, MUST SETUP this first before running this  │
+│                  program                                                         │
+│ config-file      To check your account config file, either account config file   │
+│                  or template config file.                                        │
+│ config-template  Setup Google spreadsheet, campaign info and its email content.  │
+│ create           Upload html email template to mailchimp server and create a     │
+│                  campaign.                                                       │
+╰──────────────────────────────────────────────────────────────────────────────────╯
+</pre></div>
+</div>
 </section>
 </section>
 
