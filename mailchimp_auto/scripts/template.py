@@ -11,7 +11,7 @@ config.read(directory.template_config)
 
 def generate_html_template(account_choice:str, template_name: str, 
                            input_fileName: str="master.htm",
-                           ) -> None:
+                           preview: bool = False) -> None:
      
     #print(f"123 generate_html_content account_choice: {account_choice}")
     fileLoader = FileSystemLoader(searchpath=directory.template_folder)
@@ -23,8 +23,10 @@ def generate_html_template(account_choice:str, template_name: str,
     #print(data)
     #print(f"test template_loc1: {template_loc}")
     rendered = env.get_template(template_loc).render(data=data)
-    #print(f"1 rendered: {rendered}")
-    #output_file = os.path.join(directory.output_folder, output_fileName)
-    #with open(output_file, "w", encoding="utf-8") as f:
-    #    f.write(rendered)
+    
+    if preview:
+        output_file = os.path.join(directory.output_folder, "index.htm")
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write(rendered)
+        print(f"Please check your generated template output at {output_file}")
     return rendered

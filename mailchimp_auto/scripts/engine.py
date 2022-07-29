@@ -15,7 +15,7 @@ def connect(account_username: str) -> Tuple[str, str]:
     return api_key, server_prefix
     
 # create new campaign
-def create_new_campaign(account_username:str, template_name:str):
+def create_new_campaign(account_username:str, template_name:str, preview:bool):
     """_summary_
     #How to start this program
     `python mailchimpcamp.py` or `python mailchimpcamp.py run`
@@ -26,21 +26,25 @@ def create_new_campaign(account_username:str, template_name:str):
     3. generate a html template based on your google spreadsheet input.
     4. upload that html template to the mailchimp server as the campaign content.
     """
-    api_key, server_prefix = connect(account_username)
-    # authenticate using mailchimp api and username
-    client = mailchimp_marketing.Client()
-    client.set_config({
-        "api_key": api_key,
-        "server": server_prefix,
-        })
+    if not preview:
+        api_key, server_prefix = connect(account_username)
+        # authenticate using mailchimp api and username
+        client = mailchimp_marketing.Client()
+        client.set_config({
+            "api_key": api_key,
+            "server": server_prefix,
+            })
 
-    # create campaign
-    campaign = campaign_creation_function(account_choice=account_username, 
-                                          template_choice=template_name,
-                                        client=client)
+        # create campaign
+        campaign = campaign_creation_function(account_choice=account_username, 
+                                            template_choice=template_name,
+                                            client=client)
 
-    # generate html template
-    rendered_html = generate_html_template(account_choice=account_username, template_name = template_name)  # need to input template path
+        # generate html template
+        rendered_html = generate_html_template(account_choice=account_username, template_name = template_name)  # need to input template path
 
-    # upload the html template to the campaign
-    customized_template(html_code=rendered_html, campaign_id=campaign["id"], client=client)
+        # upload the html template to the campaign
+        customized_template(html_code=rendered_html, campaign_id=campaign["id"], client=client)
+    
+    elif preview:
+        rendered_html = generate_html_template(account_choice=account_username, template_name = template_name, preview=preview)

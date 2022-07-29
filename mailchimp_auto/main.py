@@ -13,11 +13,12 @@ app = typer.Typer()
 
 @app.command(short_help="Upload html email template to mailchimp server and create a campaign.")
 def create(user: str = typer.Option(..., help="Input your Mailchimp Username here!"), 
-           template: str = typer.Option(..., help="Input your template choice here!")):
+           template: str = typer.Option(..., help="Input your template choice here!"),
+            preview:bool = typer.Option(None, help="Only create html template, but not upload to mailchimp server")):
     try:    
         engine.connect(account_username = user)
-        engine.create_new_campaign(account_username = user,template_name=template)
-        logging.info("The task has been completed!")
+        engine.create_new_campaign(account_username = user,template_name=template, preview=preview)
+        print("The task has been completed!")
     except ApiClientError as error:
         typer.echo("Error: {}".format(error.text))
         typer.echo("Please run `python -m auto_mailchimp config` to check your mailchimp API, server prefix!")        
