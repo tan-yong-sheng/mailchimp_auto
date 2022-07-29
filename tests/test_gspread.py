@@ -8,14 +8,7 @@ def test_get_campaign_info():
     #print(test.get_campaign_info("Campaign Info", ["A1:B6", "A8:B9", "A11:B11"]))
     pass
 
-def test_get_content_section():
-    #test = getGspreadData()
-    #test.access_spreadsheet(spreadsheet_url)
-    #print(test.get_content_section("Weekly Newsletter", ["A3", "A7", "A22", "A33","A43"]))
-    pass
-
 def test_get_content_info():
-    #test = getGspreadData()
-    #test.access_spreadsheet(spreadsheet_url)
-    #print(test.get_content_info("Weekly Newsletter", ["A3:B5", "A7:H20"])) # "A3:B5", "A7:H20", "A22:D31"
-    pass
+    test = getGspreadData(account_choice="TYONGSHENG", template_choice="my_weekly_newsletter")
+    test.access_spreadsheet()
+    print(test.get_content_info("Weekly Newsletter", ["A3:B5", "A7:H20"]))

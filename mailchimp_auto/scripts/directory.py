@@ -18,7 +18,7 @@ def create_dir():
     os.makedirs(template_folder, exist_ok=True)
     os.makedirs(service_account_folder, exist_ok =True)
     os.makedirs(service_account_folder, exist_ok=True)
-    os.makedirs(output_folder)
+    os.makedirs(output_folder, exist_ok=True)
 
 def create_file(file:str):
     if not os.path.isfile(file):

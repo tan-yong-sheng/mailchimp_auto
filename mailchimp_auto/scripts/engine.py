@@ -17,15 +17,25 @@ def connect(account_username: str) -> Tuple[str, str]:
 # create new campaign
 def create_new_campaign(account_username:str, template_name:str, preview:bool):
     """_summary_
-    #How to start this program
+
+    :param account_username: _description_
+    :type account_username: str
+    :param template_name: _description_
+    :type template_name: str
+    :param preview: _description_
+    :type preview: bool
+
+    Explanation: 
+    # How to start this program
     `python mailchimpcamp.py` or `python mailchimpcamp.py run`
     
-    #Processes being run:
+    # Processes being run:
     1. connect to your mailchimp account using API key.
     2. create a campaign under your certain audience list.
     3. generate a html template based on your google spreadsheet input.
     4. upload that html template to the mailchimp server as the campaign content.
     """
+    
     if not preview:
         api_key, server_prefix = connect(account_username)
         # authenticate using mailchimp api and username
@@ -48,3 +58,4 @@ def create_new_campaign(account_username:str, template_name:str, preview:bool):
     
     elif preview:
         rendered_html = generate_html_template(account_choice=account_username, template_name = template_name, preview=preview)
+        

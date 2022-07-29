@@ -15,6 +15,7 @@ app = typer.Typer()
 def create(user: str = typer.Option(..., help="Input your Mailchimp Username here!"), 
            template: str = typer.Option(..., help="Input your template choice here!"),
             preview:bool = typer.Option(None, help="Only create html template, but not upload to mailchimp server")):
+    
     try:    
         engine.connect(account_username = user)
         engine.create_new_campaign(account_username = user,template_name=template, preview=preview)
@@ -29,6 +30,11 @@ def config():
         
 @app.command(short_help="To check your account config file, either account config file or template config file.")
 def config_file(config_file_type:str=typer.Argument(..., help="Choose either `account` or `template` to see its config file location.")):
+    """_summary_
+
+    :param config_file_type: _description_, defaults to typer.Argument(..., help="Choose either `account` or `template` to see its config file location.")
+    :type config_file_type: str, optional
+    """
     account_config_path = Config.config_file_path()
     template_config_path = directory.template_config
     if config_file_type =="account" and os.path.isfile(account_config_path):        

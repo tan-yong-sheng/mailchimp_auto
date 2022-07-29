@@ -12,7 +12,7 @@ class Info:
         self.gc = getGspreadData(account_choice=self.account_choice, template_choice=self.template_choice)
     
     def getCampaignInfo(self):
-        self.worksheet_title_campaign_info = config.get(self.template_choice, "worksheet_title_campaign_info", fallback=None)
+        self.worksheet_title_campaign_info = config.get(self.template_choice, "worksheet_title_campaign_info", fallback="Campaign Info")
         self.campaign_info_cell_ranges = config.get(self.template_choice, "campaign_info", fallback=None)
         
         if len(self.campaign_info_cell_ranges) > 0:    
@@ -26,7 +26,7 @@ class Info:
     def gethtmlContent(self):
         # Part 2: get html email content
         # self.campaign_info = self.campaign_detail.get_campaign_info(worksheet_title_campaign_info, multiple_cell_ranges_campaign_info)
-        self.worksheet_title_campaign_content = config.get(self.template_choice, "worksheet_title_campaign_content", fallback=None)
+        self.worksheet_title_campaign_content = config.get(self.template_choice, "worksheet_title_campaign_content", fallback="Campaign Content")
         self.campaign_content_cell_ranges = config.get(self.template_choice, "campaign_content", fallback=None)
         
         char_to_replace = {"\"": "", "\'":"", " ":"", "[":"", "]":""}

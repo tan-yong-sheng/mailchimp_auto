@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mailchimp_auto"
-version = "0.1.4"
+version = "0.1.0"
 description = ""
 authors = ["tys203831 <tys203831@gmail.com>"]
 readme = "README.md"
@@ -13,7 +13,6 @@ python = "^3.9.12"
 typer = {extras = ["all"], version = "^0.6.1"}
 mailchimp-marketing = "^3.0.75"
 Jinja2 = "^3.1.2"
-rich = "^12.5.1"
 pandas = "^1.4.3"
 gspread = "^5.4.0"
 

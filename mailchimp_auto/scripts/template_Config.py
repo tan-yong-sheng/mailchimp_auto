@@ -144,7 +144,7 @@ class Configuration:
             conf.write(configfile)
     
     def setup_campaign(self, template_selected:str):
-        worksheet_title_campaign_info = conf.get(template_selected, "worksheet_title_campaign_info", fallback=None)
+        worksheet_title_campaign_info = conf.get(template_selected, "worksheet_title_campaign_info", fallback="Campaign Info")
         new_worksheet_title_campaign_info = input(f"\nWorksheet Title of Campaign Info.\nThe worksheet title of campaign info: .\nEnter a series of cell ranges, separated by symbol (,). Press Enter for the default ({worksheet_title_campaign_info}): ")
         new_worksheet_title_campaign_info = worksheet_title_campaign_info if len(new_worksheet_title_campaign_info) == 0 else new_worksheet_title_campaign_info
         
@@ -152,7 +152,7 @@ class Configuration:
         new_campaign_info = input(f"\nCampaign Info.\nThe Campaign info that you want to parse it to the Jinja2 HTML email template: .\nEnter a series of cell ranges, separated by symbol (,). Press Enter for the default ({campaign_info}): ")
         new_campaign_info = campaign_info if len(new_campaign_info) == 0 else new_campaign_info
             
-        worksheet_title_campaign_content = conf.get(template_selected, "worksheet_title_campaign_content", fallback=None)
+        worksheet_title_campaign_content = conf.get(template_selected, "worksheet_title_campaign_content", fallback="Campaign Content")
         new_worksheet_title_campaign_content = input(f"\nWorksheet Title of Campaign Content.\nThe worksheet title of campaign content: .\nEnter a series of cell ranges, separated by symbol (,). Press Enter for the default ({worksheet_title_campaign_content}): ")
         new_worksheet_title_campaign_content = worksheet_title_campaign_content if len(new_worksheet_title_campaign_content) == 0 else new_worksheet_title_campaign_content
        

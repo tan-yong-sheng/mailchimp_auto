@@ -12,6 +12,19 @@ config.read(directory.template_config)
 def generate_html_template(account_choice:str, template_name: str, 
                            input_fileName: str="master.htm",
                            preview: bool = False) -> None:
+    """_summary_
+
+    :param account_choice: _description_
+    :type account_choice: str
+    :param template_name: _description_
+    :type template_name: str
+    :param input_fileName: _description_, defaults to "master.htm"
+    :type input_fileName: str, optional
+    :param preview: _description_, defaults to False
+    :type preview: bool, optional
+    :return: _description_
+    :rtype: _type_
+    """
      
     #print(f"123 generate_html_content account_choice: {account_choice}")
     fileLoader = FileSystemLoader(searchpath=directory.template_folder)
@@ -22,7 +35,7 @@ def generate_html_template(account_choice:str, template_name: str,
     data=Info(account_choice=account_choice,template_choice=template_name).gethtmlContent()
     #print(data)
     #print(f"test template_loc1: {template_loc}")
-    rendered = env.get_template(template_loc).render(data=data)
+    rendered = env.get_template(template_loc).render(**data)
     
     if preview:
         output_file = os.path.join(directory.output_folder, "index.htm")
