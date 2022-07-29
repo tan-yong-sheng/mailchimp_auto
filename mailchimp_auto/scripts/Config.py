@@ -20,8 +20,8 @@ def select_action():
     print("=================\t=============")
     
     # read_config("account.conf").sections() != ["settings"] and 
-    if len(read_config("account.conf""account.cof").sections()) > 0:
-        for account in read_config("account.conf""account.conf").sections():
+    if len(read_config("account.conf").sections()) > 0:
+        for account in read_config("account.conf").sections():
             print(str(account), "\t\t", str(read_config("account.conf").get(account, "server_prefix", fallback=None)))
     print("\n")
     print("e) Edit existing account")

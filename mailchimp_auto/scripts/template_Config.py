@@ -122,10 +122,10 @@ class Configuration:
             #print(template_loc)
             
             try:
-                shutil.copytree(new_template_folder_dir, template_loc, dirs_exist_ok=True)
+                shutil.copytree(new_template_folder_dir, template_loc)
                 print(f"\nYour file is copied and uploaded to {template_loc}.")
             except shutil.SameFileError:
-                pass      
+                pass 
             
             # Step 4: Write the changes into template.conf file      
             conf.set(template_folder_name, "template_folder_dir", template_loc)
