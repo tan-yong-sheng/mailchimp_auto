@@ -158,3 +158,26 @@ If you don't want to upload your processed HTML email template to mailchimp serv
 
 It's all done. Hope you are successful with that. If got any problem, kindly contact me. By the way, this is my first time creating a python library (or cli tool) to automate my task. I know some python syntax works not the best for the program (e.g., too much repetitive code, etc). But, I hope I could learn more through creating and maintaining this program.
 
+## Other information
+```
+
+ Usage: mailchimp_auto [OPTIONS] COMMAND [ARGS]...
+
+╭─ Options ────────────────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell.          │
+│ --show-completion             Show completion for the current shell, to copy it  │
+│                               or customize the installation.                     │
+│ --help                        Show this message and exit.                        │
+╰──────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────╮
+│ config           Setup Mailchimp API, Mailchimp server prefix, Google Service    │
+│                  account's json file, MUST SETUP this first before running this  │
+│                  program                                                         │
+│ config-file      To check your account config file, either account config file   │
+│                  or template config file.                                        │
+│ config-template  Setup Google spreadsheet, campaign info and its email content.  │
+│ create           Upload html email template to mailchimp server and create a     │
+│                  campaign.                                                       │
+╰──────────────────────────────────────────────────────────────────────────────────╯
+
+```

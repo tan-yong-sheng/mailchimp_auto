@@ -2,3 +2,5 @@ dist/*
 .pytest_cache
 mailchimp_auto/__pycache__
 tests/__pycache__
+
+git_command.bat
