@@ -17,7 +17,8 @@ As a newbie hobbyist in Python, I found it very troublesome to drag and drop the
 ----
 ## Getting Started
 
-* `pip install mailchimp_auto`
+* `pip install mailchimp_auto` 
+* To get the latest release, `pip install git+https://github.com/tys203831/mailchimp_auto.git@main`
 
 ---
 ## Configuration
