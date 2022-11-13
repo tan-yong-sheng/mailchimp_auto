@@ -1,0 +1,4 @@
+1. generate_template.py 
+- for function customized_template, find a place to pass in json data for html template
+- Send data to mc:edit => https://stackoverflow.com/questions/29366766/mailchimp-api-not-replacing-mcedit-content-sections-using-ruby-library
+- Send data to mc:repeatable => https://stackoverflow.com/questions/69292472/mailchimp-api-and-mcrepeatable

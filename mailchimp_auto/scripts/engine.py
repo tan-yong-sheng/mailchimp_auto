@@ -2,7 +2,7 @@
 import mailchimp_marketing
 from mailchimp_auto.scripts.create_campaign import campaign_creation_function
 from mailchimp_auto.scripts.load_newsletter_template import customized_template # html_code is a variable
-from mailchimp_auto.scripts.template import generate_html_template
+from mailchimp_auto.scripts.generate_template import generate_html_template
 from mailchimp_auto.scripts.Config import *
 from typing import Tuple
 from mailchimp_auto.scripts.campaign_detail import *

@@ -42,4 +42,6 @@ def generate_html_template(account_choice:str, template_name: str,
         with open(output_file, "w", encoding="utf-8") as f:
             f.write(rendered)
         print(f"Please check your generated template output at {output_file}")
+        
+    # ?? need to add this one? : Send data to mc:edit => https://stackoverflow.com/questions/29366766/mailchimp-api-not-replacing-mcedit-content-sections-using-ruby-library
     return rendered
