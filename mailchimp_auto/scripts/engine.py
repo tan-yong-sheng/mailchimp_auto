@@ -1,11 +1,11 @@
 # from mailchimp3 import MailChimp
 import mailchimp_marketing
 from mailchimp_auto.scripts.create_campaign import campaign_creation_function
-from mailchimp_auto.scripts.load_newsletter_template import customized_template # html_code is a variable
-from mailchimp_auto.scripts.generate_template import generate_html_template
+from mailchimp_auto.scripts.template_action import generate_html_template, upload_template, get_editable_content
 from mailchimp_auto.scripts.Config import *
 from typing import Tuple
 from mailchimp_auto.scripts.campaign_detail import *
+import logging
 
 # setup mailchimp account
 def connect(account_username: str) -> Tuple[str, str]:
@@ -45,17 +45,21 @@ def create_new_campaign(account_username:str, template_name:str, preview:bool):
             "server": server_prefix,
             })
 
+        # generate html template
+        rendered_html = generate_html_template(account_choice=account_username, template_name = template_name)  # need to input template path
+        
+        
+        # upload html template to mailchimp server
+        template_id = upload_template(template_name = template_name, html_code=rendered_html, client=client)
+
         # create campaign
         campaign = campaign_creation_function(account_choice=account_username, 
                                             template_choice=template_name,
-                                            client=client)
-
-        # generate html template
-        rendered_html = generate_html_template(account_choice=account_username, template_name = template_name)  # need to input template path
-
-        # upload the html template to the campaign
-        customized_template(html_code=rendered_html, campaign_id=campaign["id"], client=client)
+                                            client=client, template_id=template_id)
+        
+        logging.info(campaign["id"])
+        
+        print(get_editable_content(template_id=template_id, client=client))
     
     elif preview:
         rendered_html = generate_html_template(account_choice=account_username, template_name = template_name, preview=preview)
-        

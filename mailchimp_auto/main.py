@@ -22,7 +22,7 @@ def create(user: str = typer.Option(..., help="Input your Mailchimp Username her
         print("The task has been completed!")
     except ApiClientError as error:
         typer.echo("Error: {}".format(error.text))
-        typer.echo("Please run `python -m auto_mailchimp config` to check your mailchimp API, server prefix!")        
+        typer.echo("Please run `python -m mailchimp_auto config` to check your mailchimp API, server prefix!")        
     
 @app.command(short_help="Setup Mailchimp API, Mailchimp server prefix, Google Service account's json file, MUST SETUP this first before running this program")
 def config():
