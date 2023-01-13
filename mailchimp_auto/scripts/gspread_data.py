@@ -6,6 +6,8 @@ import os
 from configparser import RawConfigParser
 from mailchimp_auto.scripts.directory import *
 import logging
+import re
+from mailchimp_auto.scripts.image_processor import upload_image
 
 config = RawConfigParser()
 config.read(template_config)
@@ -18,35 +20,22 @@ class getGspreadData:
             credentials (dict, optional): Google Oauth2.0 JSON credentials in python dict instead of original json format. Defaults to credentials.
             user_authorized (dict, optional): authorized user's client id, client secret, etc in python dict format. Defaults to user_authorized.
         """
-        # self.user_authorized = db.all()[0]
         self.account_choice = account_choice
         self.template_choice = template_choice
         self.spreadsheet_url = config.get(self.template_choice, "spreadsheet_url", fallback=None)
         self.sheet = self.access_spreadsheet()
-
-    #def start_new_connection(self) -> None: # used when config
-    #    self.gc, user_authorized = gspread.oauth_from_dict(self.credentials)
-    #   db.truncate()
-    #    db.insert(json.loads(user_authorized))
     
     def access_spreadsheet(self):
         tpl_config = RawConfigParser()
         tpl_config.read(account_config)
         service_account_file_path = tpl_config.get(self.account_choice, "service_account_file_path", fallback=None)
-        #print(f"spreadsheet url 1: {self.spreadsheet_url}")
-        #print(f"template_choice1: {self.template_choice}")
+
         try:
-            #print(service_account_file_path)
             self.gc = gspread.service_account(filename=service_account_file_path) #oauth_from_dict(self.credentials, self.user_authorized)
-            #print(f"spreadsheet url 1: {self.spreadsheet_url}")
-            #logging.debug(str(self.spreadsheet_url))
             sheet = self.gc.open_by_url(self.spreadsheet_url)
         except gspread.exceptions.APIError as error:
             print(f"{error}")
             print("Please choose the Google account that has permission to open the spreadsheet!")
-            # self.start_new_connection()
-            # print(self.spreadsheet_url)
-            #sheet = self.gc.open_by_url(self.spreadsheet_url)
         logging.debug(f"The type of sheet object: {type(sheet)}")
         return sheet
 
@@ -98,4 +87,9 @@ class getGspreadData:
             df_with_header.replace("", np.nan, inplace=True)
             df_with_header.dropna(axis=0, how="any", inplace=True)
             content_info_dict[section_name[0]].update(df_with_header.to_dict())
+        
+    
+        #print(content_info_dict)
+        #print("--------content info dict above------------")
+                
         return content_info_dict
