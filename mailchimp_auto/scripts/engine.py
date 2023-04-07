@@ -46,7 +46,7 @@ def create_new_campaign(account_username:str, template_name:str, preview:bool):
             })
 
         # generate html template
-        rendered_html = generate_html_template(account_choice=account_username, template_name = template_name, client=client)  # need to input template path
+        rendered_html = generate_html_template(account_choice=account_username, template_name = template_name)  # need to input template path
         
         
         # upload html template to mailchimp server

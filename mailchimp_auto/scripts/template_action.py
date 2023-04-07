@@ -14,7 +14,6 @@ config = RawConfigParser()
 config.read(directory.template_config)
 
 def generate_html_template(account_choice:str, template_name: str, 
-                           client: mailchimp_marketing.Client,
                            input_fileName: str="master.htm",
                            preview: bool = False) -> None:
     """_summary_
@@ -37,7 +36,7 @@ def generate_html_template(account_choice:str, template_name: str,
     # use json/csv and for loop to render
     template_loc = f"{template_name}/{input_fileName}"
     data=Info(account_choice=account_choice,template_choice=template_name).gethtmlContent()
-    updated_data = update_image_link(data, client)
+    #updated_data = update_image_link(data, client)
     #print(data)
     #print(f"test template_loc1: {template_loc}")
     rendered = env.get_template(template_loc).render(**data)
