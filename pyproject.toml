@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mailchimp_auto"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["tys203831 <tys203831@gmail.com>"]
 readme = "README.md"
