@@ -60,13 +60,14 @@ def upload_template(template_name: str, html_code:str, client: type[mailchimp_ma
         client (_type_): _description_
     """
     string_template = Template(html_code).safe_substitute()
-    
+    template_id = 0
     try:
-        response: dict = client.templates.create({"name": f"{template_name}_{datetime.datetime.now().strftime('%YY_%m_%d')}", "html": string_template})
+        template_name = f"{template_name}_{datetime.datetime.now().strftime('%YY_%m_%d')}"
+        response: dict = client.templates.create({"name": template_name, "html": string_template})
         template_id: int = response["id"]
         logging.info(response)
     except ApiClientError as error:
-        print("Error: {}".format(error.text))
+        raise Exception("Error: {}".format(error.text))
     return template_id
 
 # Get the sections that you can edit in a template, including each section's default content.

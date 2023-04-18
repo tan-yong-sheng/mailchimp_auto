@@ -2,3 +2,18 @@
 - for function customized_template, find a place to pass in json data for html template
 - Send data to mc:edit => https://stackoverflow.com/questions/29366766/mailchimp-api-not-replacing-mcedit-content-sections-using-ruby-library
 - Send data to mc:repeatable => https://stackoverflow.com/questions/69292472/mailchimp-api-and-mcrepeatable
+
+
+Some ideas:
+https://stackoverflow.com/questions/26768752/repeatable-regions-in-mailchimp
+
+
+
+
+Blog: https://www.createscape.ca/adding-mailchimps-drag-and-drop-editor-to-a-custom-template/
+
+
+https://stackoverflow.com/questions/33575177/is-it-possible-to-create-your-own-drag-and-drop-mailchimp-template
+
+https://stackoverflow.com/questions/38447364/is-it-possible-to-code-dragdrop-templates-for-mailchimp/41620134#41620134
+

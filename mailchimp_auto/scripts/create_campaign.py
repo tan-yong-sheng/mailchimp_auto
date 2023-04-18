@@ -38,6 +38,11 @@ def campaign_creation_function(account_choice:str, template_choice: str,
             "from_name": tpl.getCampaignInfo()["from_name"],
             "to_name": tpl.getCampaignInfo()["to_name"], 
             "reply_to": tpl.getCampaignInfo()["reply_to"],
+            "template_id": 0, # added from here
+            "auto_footer": False,
+            "inline_css": True,
+            "auto_tweet": False,
+            "auto_fb_post": False
             
         },
         "tracking":
@@ -58,5 +63,5 @@ def campaign_creation_function(account_choice:str, template_choice: str,
     new_campaign = client.campaigns.create(data)
     logging.debug("type of New campaign: " + str(type(new_campaign)))
     logging.debug(new_campaign)
-    
+        
     return new_campaign
