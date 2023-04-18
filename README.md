@@ -68,7 +68,7 @@ Type the command line `mailchimp_auto config-template` or `python -m mailchimp_a
 Current template(s):
 Template                        Spreadsheet Id
 ========                        ===============
-my_weekly_newsletter             1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0
+My_Weekly_Newsletter             1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0
 
 
 e) Edit existing template
@@ -113,7 +113,7 @@ Below are the commands when I want to edit (e) some config of my template. It do
 Current template(s):
 Template                        Spreadsheet Id
 ========                        ===============
-my_weekly_newsletter             1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0
+My_Weekly_Newsletter             1h31GQRfBqUpMmPCXI013J1-Y-kinfgifN6Pa3dx3hB0
 
 e) Edit existing template
 n) New template
@@ -123,12 +123,12 @@ e/n/d/q > e
 
 Select template.
 Choose a number from below, or type in an existing value.
-1 >  my_weekly_newsletter
+1 >  My_Weekly_Newsletter
 Template > 1
 
 Template folder.
 The file path of the HTML email template folder.
-Enter a string value. Press Enter for the default (C:\Users\tys\Documents\mailchimp-auto\template\my_weekly_newsletter): C:\Users\tys\Documents\Project\mailchimp_creation_project\mailchimp-auto\sample_template
+Enter a string value. Press Enter for the default (C:\Users\tys\Documents\mailchimp-auto\template\My_Weekly_Newsletter): C:\Users\tys\Documents\mailchimp-auto\template\My_Weekly_Newsletter
 
 Spreadsheet url.
 The Google spreadsheet url that you want to parse it to the Jinja2 HTML email template: .
