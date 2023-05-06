@@ -10,7 +10,7 @@ This package uses 2 major packages:
 * `mailchimp-marketing` to automate creating campaign on Mailchimp
 * `jinja2` for managing tags inserted into the HTML email template to loop over and replace the data elements
 
-To make the email campaign design editable even after uploaded to the server programmatically (e.g., edit the uploaded image written in html), you could refer to this Mailchimp template language to have a minor change to your html template: https://templates.mailchimp.com/getting-started/template-language/
+To make the email campaign design editable even after uploaded to the server programmatically (e.g., edit the uploaded image written in html), you could refer to this Mailchimp template language to amend your html template: https://templates.mailchimp.com/getting-started/template-language/
 
 ----
 ## Motivation
