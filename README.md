@@ -17,7 +17,7 @@ To make the email campaign design editable even after uploaded to the server pro
 As a newbie hobbyist in Python, I found it very troublesome to drag and drop the editor in MailChimp in a weekly basis just to change some certain contents in the template that wastes me 30 minutes per change, thus I need a way to automate that campaign creation.
 
 
----
+--
 ## Getting Started
 
 * `pip install mailchimp_auto` 
@@ -131,7 +131,7 @@ Template > 1
 
 Template folder.
 The file path of the HTML email template folder.
-Enter a string value. Press Enter for the default (C:\Users\tys\Documents\mailchimp-auto\template\My_Weekly_Newsletter): C:\Users\tys\Documents\mailchimp-auto\template\My_Weekly_Newsletter
+Enter a string value. Press Enter for the default (None): C:\Users\tys\Documents\Coding\github-project\mailchimp_auto\sample_template\MY_Weekly_Newsletter
 
 Spreadsheet url.
 The Google spreadsheet url that you want to parse it to the Jinja2 HTML email template: .
