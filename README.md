@@ -10,6 +10,7 @@ This package uses 2 major packages:
 * `mailchimp-marketing` to automate creating campaign on Mailchimp
 * `jinja2` for managing tags inserted into the HTML email template to loop over and replace the data elements
 
+To make the email campaign design editable even after uploaded to the server programmatically (e.g., edit the uploaded image written in html), you could refer to this Mailchimp template language to have a minor change to your html template: https://templates.mailchimp.com/getting-started/template-language/
 ----
 ## Motivation
 As a newbie hobbyist in Python, I found it very troublesome to drag and drop the editor in MailChimp in a weekly basis just to change some certain contents in the template that wastes me 30 minutes per change, thus I need a way to automate that campaign creation.
@@ -26,6 +27,18 @@ As a newbie hobbyist in Python, I found it very troublesome to drag and drop the
 Before you start using this cli tool, you should setup Mailchimp API, Mailchimp server prefix, Google Service account's json file through the command line `mailchimp_auto config` or `python -m mailchimp_auto config`.
 
 And after the command has been run, the interface below will appear:
+
+## Challenge faced for this project:
+As I want to adding MailChimp’s drag and drop editor to a custom html template, I refer to this blog: https://www.createscape.ca/adding-mailchimps-drag-and-drop-editor-to-a-custom-template/ and found adding this code into custom html template did works: `<div  mc:container="body_container" mccontainer="body_container"></div>`
+
+However, when I tried to upload this code via API, the validation error pops out as below:
+
+```
+Exception: Error: {"type":"https://mailchimp.com/developer/marketing/docs/errors/","title":"Invalid
+Resource","status":400,"detail":"The resource submitted could not be validated. For field-specific details, see the
+'errors' array.","instance":"5352e45e-adfd-08d8-6afd-e1e5be681c43","errors":[{"field":"html","message":"Only classic
+templates support updating content through the API"}]}
+```
 
 ```
 Current Mailchimp remote:
